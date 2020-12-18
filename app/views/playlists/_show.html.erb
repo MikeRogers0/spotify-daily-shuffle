@@ -1,0 +1,31 @@
+<div class="m-4 mb-5 text-center">
+  <div class="mb-5">
+    <p class="lead">You're all setup! Just add tracks to the <%= 'playlist'.pluralize(current_user.playlists.count) %> below (Click the playlist artwork to open in Spotify).</p>
+    <p>Your songs will be <em>shuffled automatically</em> for you every day at <strong><%= time_until_to_next_shuffle %></strong> 🎸</p>
+  </div>
+
+  <div class="mt-3 row justify-content-center">
+    <% current_user.playlists.each do |playlist| %>
+      <div class="col-12 col-md-4">
+        <%= simple_form_for playlist, url: [:shuffle, playlist], method: :patch, remote: true do |f| %>
+          <div class="card">
+            <%= link_to playlist.spotify_href, target: '_blank' do %>
+              <% if playlist.image_url.present? %>
+                <%= image_tag  playlist.image_url, class: 'card-img-top', alt: 'Current playlist image' %>
+              <% else %>
+                <div class="card-header">
+                  <p>No songs found in this playlist, add some to get started.</p>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= playlist.name %></h5>
+
+              <%= f.submit 'Reshuffle Playlist Now', class: 'btn btn-primary', 'data-disable-with': 'Shuffling...', 'data-complete-with': 'Shuffled - Updating soon' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

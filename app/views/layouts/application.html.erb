@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Spotify Playlist Shuffler for Alexa - A Spotify Playlist Shuffled Daily</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <% if ENV['SENTRY_DSN'].present? %>
+      <meta name="x-sentry-dsn" content="<%= ENV['SENTRY_DSN'] %>">
+      <meta name="x-sentry-release" content="<%= Raven.configuration.release %>">
+      <meta name="x-sentry-environment" content="<%= Raven.configuration.current_environment %>">
+      <meta name="x-sentry-user-id" content="<%= Raven.context.user&.dig(:id) %>">
+    <% end %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="jumbotron jumbotron-fluid jumbotron--musical">
+      <div class="container text-center">
+        <h1 class="display-4">Spotify Playlist Shuffler for Alexa</h1>
+        <p class="lead">Shuffle your playlists every day, so your smart device's music alarm will play it in a random order.</p>
+      </div>
+    </div>
+
+    <div class="container mb-3">
+      <%= yield %>
+    </div>
+
+    <% if current_user %>
+      <hr />
+      <div class="container">
+        <div class="mt-3 mb-5 text-center">
+          <p>Currently logged in as <%= current_user.name %></p>
+          <p><%= link_to 'Home', root_path %> | <%= link_to 'Manage data', users_datas_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+        </div>
+      </div>
+    <% end %>
+  </body>
+</html>

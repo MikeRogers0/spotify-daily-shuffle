@@ -1,0 +1,13 @@
+<div class="m-4 mb-5 text-center">
+  <p>I put this together after discovering the Amazon Alexa was unable to shuffle a Spotify Playlist in its music alarm feature. <br />
+
+  This solves this problem by creating a playlist - which you can add your music to - that get shuffled daily! Simple!</p>
+
+  <p>To get start, just connect your Spotify account:</p>
+  <div class="m-4 p-1">
+    <p><%= link_to "Sign in with #{OmniAuth::Utils.camelize(:spotify)}", omniauth_authorize_path(:user, :spotify), class: 'btn btn-primary' %></p>
+  </div>
+
+  <p>The app will then create a playlist, which will be shuffled daily that you can use with your smart device.</p>
+</div>
+

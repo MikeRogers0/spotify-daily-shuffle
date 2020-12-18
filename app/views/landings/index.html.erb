@@ -1,0 +1,9 @@
+<% if current_user %>
+  <%= render 'playlists/show' %>
+  <hr />
+  <%= render 'playlists/how_to_schedule' %>
+<% else %>
+  <%= render 'landings/how_it_works' %>
+  <hr />
+  <%= render 'landings/support_this' %>
+<% end %>
