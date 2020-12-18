@@ -1,0 +1,9 @@
+.jumbotron {
+  &.jumbotron--musical {
+    background: url('../../images/record-top.jpg') 50% 0%;
+    background-size: cover;
+
+    text-shadow: 1px 1px 1rem rgba(#fff, 0.5);
+    box-shadow: 1px 1px 1rem rgba(#000, 0.25);
+  }
+}

@@ -1,0 +1,24 @@
+<h2 class="text-center mt-5">Scheduling your playlist</h2>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-12 col-md-9">
+    <p>
+      Amazon's Alexa can be pretty fiddly when using Spotify.
+      Before you start, make sure you've
+      <%= link_to 'connected your Spotify account to Amazon', 'https://alexa.amazon.com/spa/index.html#settings/music-settings' %>
+      and
+      <%= link_to 'set Spotify as the default music service', 'https://alexa.amazon.co.uk/spa/index.html#settings/music-settings/service-preferences' %>.
+    </p>
+
+    <p>This requires the Alexa app (<%= link_to 'iOS', 'https://itunes.apple.com/us/app/amazon-alexa/id944011620' %> / <%= link_to 'Android', 'https://play.google.com/store/apps/details?id=com.amazon.dee.app&hl=en' %>) to be installed on your mobile.</p>
+    <ul>
+      <li>Open App &gt; Open Menu (Top left icon) &gt; Routines &gt; Add (top right icon)</li>
+      <li>Add action &gt; Music</li>
+      <li>Play: My Morning Shuffle, on: Spotify</li>
+    </ul>
+  </div>
+
+  <div class="col-12 col-md-3 d-none d-md-block">
+    <%= image_pack_tag 'alexa-app.png', class: 'img-fluid rounded shadow' %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h2>Manage data</h2>
+  <p>Your data is important and you should be in control of it. This page should give you that power</p>
+</div>
+
+<div class="row justify-content-center text-center mt-5">
+  <div class="col-12 col-md-5">
+    <h3>Export Data</h3>
+    <p>Get all the data this app has stored on your in a .json file.</p>
+    <p>
+      <%= simple_form_for current_user, url: [:export, :users, :datas, {format: :json}], method: :post do |f| %>
+        <%= f.submit 'Export Data', class: 'btn btn-primary' %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="col-12 col-md-5 offset-md-1">
+    <h3>Delete Data</h3>
+    <p>Delete your data from our database. This will not delete your playlist on Spotify, but will delete all the information we store on it and about you.</p>
+    <p>
+      <%= simple_form_for current_user, url: [:users, :datas], method: :delete do |f| %>
+        <%= f.submit 'Delete Data', class: 'btn btn-danger', 'data-confirm': 'Are you sure?' %>
+      <% end %>
+    </p>
+  </div>
+</div>

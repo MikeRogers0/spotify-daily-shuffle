@@ -1,0 +1,60 @@
+{
+  "name": "Spotify Daily Shuffle",
+  "description": "Get a shuffled playlist every morning",
+  "addons": [],
+  "env": {
+    "LANG": {
+      "required": true,
+      "value": "en_US.UTF-8"
+    },
+    "RACK_ENV": {
+      "required": true,
+      "value": "production"
+    },
+    "RAILS_ENV": {
+      "required": true,
+      "value": "production"
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true,
+      "value": "enabled"
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true,
+      "value": "enabled"
+    },
+    "DURING_RELEASE_RUN_MIGRATIONS": {
+      "required": true,
+      "value": "enabled"
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SPOTIFY_CLIENT_ID": {
+      "required": true
+    },
+    "SPOTIFY_CLIENT_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 0
+    }
+  },
+  "addons": [
+    "heroku-redis:hobby-dev",
+    "heroku-postgresql:hobby-dev",
+    "papertrail",
+    "sentry"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+  
+}
