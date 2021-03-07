@@ -229,13 +229,6 @@ GEM
     rubocop-performance (1.10.1)
       rubocop (>= 0.90.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.9.1)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 0.90.0, < 2.0)
-    rubocop-rspec (2.2.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
@@ -265,6 +258,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    standard (1.0.4)
+      rubocop (= 1.11.0)
+      rubocop-performance (= 1.10.1)
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -312,13 +308,10 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   rspec-rails
-  rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
   sass-rails (>= 6)
   sentry-raven
   simple_form
+  standard
   turbolinks (~> 5)
   webdrivers
   webmock
