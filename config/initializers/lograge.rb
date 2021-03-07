@@ -11,7 +11,7 @@ Rails.application.configure do
     {
       host: controller.request.host,
       remote_ip: controller.request.remote_ip,
-      user_id: controller.session['warden.user.user.key']&.first&.first
+      user_id: controller.session["warden.user.user.key"]&.first&.first
     }
   end
 end

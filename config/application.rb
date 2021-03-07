@@ -1,16 +1,16 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails'
+require "rails"
 # Pick the frameworks you want:
-require 'active_model/railtie'
-require 'active_job/railtie'
-require 'active_record/railtie'
+require "active_model/railtie"
+require "active_job/railtie"
+require "active_record/railtie"
 # require "active_storage/engine"
-require 'action_controller/railtie'
-require 'action_mailer/railtie'
-require 'action_view/railtie'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
 # require "action_cable/engine"
-require 'sprockets/railtie'
+require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -41,11 +41,11 @@ module SpotifyPlaylistShuffler
     end
 
     # Enable serving of images, stylesheets, and JavaScripts from an CDN server.
-    config.action_controller.asset_host = ENV['ASSET_HOST'] if ENV['ASSET_HOST']
+    config.action_controller.asset_host = ENV["ASSET_HOST"] if ENV["ASSET_HOST"]
 
     # When visiting an external HTTP link, don't send a referrer
     config.action_dispatch.default_headers.merge!({
-                                                    'Referrer-Policy' => 'no-referrer-when-downgrade'
-                                                  })
+      "Referrer-Policy" => "no-referrer-when-downgrade"
+    })
   end
 end
