@@ -7,7 +7,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'httparty'
 gem 'lograge'
-gem 'omniauth'
+gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-spotify'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
@@ -33,4 +33,3 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
-
