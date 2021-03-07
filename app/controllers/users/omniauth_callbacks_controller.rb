@@ -6,8 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect(user, event: :authentication)
       set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
     else
-      raise user.errors.inspect
-      session["devise.spotify_data"] = request.env["omniauth.auth"]
+      Sentry.capture_message(user.errors.inspect)
       redirect_to root_path, alert: t(".alert")
     end
   end
