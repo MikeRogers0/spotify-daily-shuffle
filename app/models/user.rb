@@ -2,12 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:spotify]
+    :omniauthable, omniauth_providers: [:spotify]
 
   has_many :playlists, dependent: :destroy
 
   validates :provider, presence: true
-  validates :uid, presence: true, uniqueness: { scope: :provider }
+  validates :uid, presence: true, uniqueness: {scope: :provider}
 
   validates :name, presence: true
   # validates :country_code, presence: true
@@ -69,11 +69,11 @@ class User < ApplicationRecord
 
     response = SpotifyApi::Token.new.refresh_token(spotify_refresh_token)
 
-    if response['access_token'].present?
+    if response["access_token"].present?
       update(
-        spotify_token: response['access_token'],
-        spotify_expires_at: Time.zone.now + (response['expires_in'] || -100),
-        spotify_refresh_token: response['refresh_token'] || spotify_refresh_token
+        spotify_token: response["access_token"],
+        spotify_expires_at: Time.zone.now + (response["expires_in"] || -100),
+        spotify_refresh_token: response["refresh_token"] || spotify_refresh_token
       )
     else
       false

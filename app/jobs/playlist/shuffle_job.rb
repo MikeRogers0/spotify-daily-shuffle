@@ -6,7 +6,7 @@ class Playlist::ShuffleJob < ApplicationJob
 
     playlist.user.refesh_spotify_token!
     playlist.shuffle_tracks! unless playlist.user.spotify_token_expired?
-  rescue StandardError => e
+  rescue => e
     Raven.capture_exception(e)
   end
 end

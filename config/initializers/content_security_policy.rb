@@ -11,7 +11,7 @@ Rails.application.config.content_security_policy do |policy|
   # policy.object_src  :none
   # policy.script_src  :self, :https
   # policy.style_src   :self, :https
-  policy.upgrade_insecure_requests !ENV.fetch('SKIP_CSP_UPGRADE_INSECURE_REQUESTS') { false }
+  policy.upgrade_insecure_requests !ENV.fetch("SKIP_CSP_UPGRADE_INSECURE_REQUESTS", false)
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"
