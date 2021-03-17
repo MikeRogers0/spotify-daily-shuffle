@@ -7,6 +7,8 @@ class Playlist < ApplicationRecord
   before_save :create_on_spotify!, unless: :spotify_playlist_id?
 
   def self.build_from(user)
+    raise "Foobar"
+
     new({
       user: user,
       name: "My Morning Shuffle#{" (Dev)" if Rails.env.development?}",
@@ -14,23 +16,25 @@ class Playlist < ApplicationRecord
     })
   end
 
+
+
   def self.shuffle_all
     Playlist.where(updated_at: [Time.at(0)..8.hours.ago]).find_each do |playlist|
       Playlist::ShuffleJob.perform_now(playlist)
     end
   end
 
-  def create_on_spotify!
-    playlist = playlist_api.create(user.uid, {
-      name: name,
-      description: description,
-      public: false
-    })
+                    def create_on_spotify!
+                      playlist = playlist_api.create(user.uid, {
+                        name: name,
+                        description: description,
+                        public: false
+                      })
 
-    self.spotify_playlist_id = playlist["id"]
-    self.spotify_href = playlist["href"]
-    add_default_tracks_to_playlist!
-  end
+                      self.spotify_playlist_id = playlist["id"]
+                      self.spotify_href = playlist["href"]
+                      add_default_tracks_to_playlist!
+                    end
 
   def add_default_tracks_to_playlist!
     # Now add some tracks:
